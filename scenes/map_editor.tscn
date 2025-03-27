@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://cd60ip5336kj0"]
+
+[ext_resource type="Script" uid="uid://c1lgp0veug184" path="res://scenes/map_editor.gd" id="1_l5hcm"]
+[ext_resource type="Texture2D" uid="uid://c15r2nip3fuyk" path="res://assets/icons/shape-rectangle-plus.svg" id="2_8qdu6"]
+[ext_resource type="Texture2D" uid="uid://bgfdn5xvphkwf" path="res://assets/icons/folder-open.svg" id="2_o22ft"]
+[ext_resource type="Texture2D" uid="uid://bna3c0f8ifgst" path="res://assets/icons/shape-circle-plus.svg" id="3_o22ft"]
+[ext_resource type="Texture2D" uid="uid://bs6vipeef8b5r" path="res://assets/icons/shape-polygon-plus.svg" id="4_wfxal"]
+
+[node name="MapEditor" type="Node2D"]
+script = ExtResource("1_l5hcm")
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = -537.0
+offset_top = -324.0
+offset_right = 577.0
+offset_bottom = -284.0
+
+[node name="LoadMapButton" type="Button" parent="UI/TopBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 37.0
+offset_bottom = 36.0
+icon = ExtResource("2_o22ft")
+
+[node name="SidePanel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = -577.0
+offset_top = -324.0
+offset_right = -537.0
+offset_bottom = 283.0
+
+[node name="RectangleButton" type="Button" parent="UI/SidePanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 37.0
+offset_bottom = 36.0
+icon = ExtResource("2_8qdu6")
+
+[node name="CircleButton" type="Button" parent="UI/SidePanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 40.0
+offset_right = 37.0
+offset_bottom = 72.0
+icon = ExtResource("3_o22ft")
+
+[node name="PolygonButton" type="Button" parent="UI/SidePanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 76.0
+offset_right = 37.0
+offset_bottom = 108.0
+icon = ExtResource("4_wfxal")
+
+[node name="BottomBar" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = -577.0
+offset_top = 282.0
+offset_right = 577.0
+offset_bottom = 322.0
+
+[node name="ViewportDisplay" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_left = -535.0
+offset_top = -283.0
+offset_right = 575.0
+offset_bottom = 280.0
+
+[node name="MapCamera" type="Camera2D" parent="."]
+
+[connection signal="pressed" from="UI/TopBar/LoadMapButton" to="." method="_on_load_map_button_pressed"]
+[connection signal="pressed" from="UI/SidePanel/RectangleButton" to="." method="_on_rectangle_button_pressed"]
+[connection signal="pressed" from="UI/SidePanel/CircleButton" to="." method="_on_circle_button_pressed"]
+[connection signal="pressed" from="UI/SidePanel/PolygonButton" to="." method="_on_polygon_button_pressed"]
